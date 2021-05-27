@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+<h1 align="center">
+	<br>
+	<a height="200" href="#" target="_blank" alt="Link to application"><img src="https://i.imgur.com/jSRNkXH.jpg" alt="Random image" width="200"></a>
+	<br>
+	<br>
+	<p>Ultimate Game Center - Frontend</p>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h4 align="center">An ultimate game center platform created for the <a href="#" target="_blank" alt="Link to skills me">SkillsMe</a> Hackathon</h4>
 
-## Available Scripts
+<p align="center">
+		<img src="https://img.shields.io/badge/Hackathon-Ready-brightgreen">
+		<img src="https://img.shields.io/badge/react-17.0.2-ff69b4">
+</p>
 
-In the project directory, you can run:
+<p align="center">
+		<a href="#demo">Demo</a> •
+		<a href="#how-to-use">How To Use</a> •
+		<a href="#key-features">Key Features</a> •
+		<a href="#local-instance">Local Instance</a> •
+		<a href="#license">License</a> •
+		<a href="#author">Author</a>
+</p>
 
-### `yarn start`
+## Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+https://youtu.be/TAePkx2504o
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How To Use
 
-### `yarn test`
+Go to https://ultimate-game-center.herokuapp.com/.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Click tick or deny to attend events that are displayed on the screen.<br />
+When you match with someone a notification will appear in the bottom left corner of your screen.<br />
+Clicking their name will allow you to visit their social media and contact them.
 
-### `yarn build`
+## Local Instance
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+git clone https://github.com/Auckland-Student-Hackathon/Ultimate-Frontend.git ./frontend
+git clone https://github.com/Auckland-Student-Hackathon/Ultimate-Backend.git ./backend
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+and then
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+For Frontend
 
-### `yarn eject`
+cd ./Ultimate-Frontend && npm i;
+Create .env file based on .env.template
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<p> 
+<strong>The MIT License</strong><br>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Copyright 2021 Ultimate Game
 
-## Learn More
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-### Code Splitting
+</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Authors
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> LinkedIn [Taylor Tran](www.linkedin.com/in/taylor-tran-0024) &nbsp;&middot;&nbsp;
+> Github [@teinnt](https://github.com/teinnt) &nbsp;&middot;&nbsp;
+> LinkedIn [Bob Liou](httpshttps://www.linkedin.com/in/bob-liou/) &nbsp;&middot;&nbsp;
+> Github [@BobTheSoftwareDeveloper](https://github.com/BobTheSoftwareDeveloper)
