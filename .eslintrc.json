@@ -1,0 +1,23 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "ignorePatterns": ["node_modules/**/*"],
+  "plugins": ["react", "prettier", "jsx-a11y"],
+  "rules": {
+    "react/prop-types": 0,
+    "no-unused-vars": "off",
+    "no-underscore-dangle": [2, { "allow": ["_id"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "semi": false,
+        "endOfLine": "auto"
+      }
+    ]
+  },
+  "extends": ["react-app", "react-app/jest", "airbnb", "plugin:jsx-a11y/recommended", "plugin:prettier/recommended"]
+}
