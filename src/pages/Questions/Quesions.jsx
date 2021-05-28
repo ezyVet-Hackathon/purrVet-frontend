@@ -4,7 +4,9 @@ function Quesions(props) {
   return (
     <div>
       <div>Questions</div>
-      <button type="button">Next</button>
+      <a href="/find/service">
+        <button type="button">Next</button>
+      </a>
     </div>
   )
 }

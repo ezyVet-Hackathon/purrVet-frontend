@@ -1,0 +1,28 @@
+.box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  background-color: #b3d2ce;
+  width: 17vw;
+  height: 30vh;
+  margin: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  :hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+.box img {
+  max-width: 10vw;
+}
+
+.pet-train img {
+  max-width: 8vw;
+}

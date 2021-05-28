@@ -1,0 +1,22 @@
+.clinic-card {
+  display: flex;
+  max-width: 20vw;
+  flex-direction: column;
+}
+
+img {
+  max-width: 3vw;
+}
+
+.clinic-img {
+  max-width: 20vw;
+  border-radius: 10px;
+}
+
+.clinic-box {
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  max-width: 20vw;
+  font-size: large;
+}
