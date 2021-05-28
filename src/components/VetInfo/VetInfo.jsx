@@ -23,7 +23,15 @@ function VetInfo({ clinicInfo }) {
   )
 
   return (
-    <div className="clinic-card">
+    <div
+      className="clinic-card"
+      onMouseOver={() => {
+        console.log('hovered')
+      }}
+      onFocus={() => {
+        console.log('on focus')
+      }}
+    >
       <a href="/find/service/vets">
         <img className="clinic-img" src={icons.vet} alt="clinic" />
       </a>
