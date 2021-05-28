@@ -12,7 +12,7 @@ const ClinicCard = ({ clinicInfo, setHighlightedMarker }) => {
   const clinicMock = [
     {
       src: icons.clinicName,
-      content: clinicInfo.name || 'Vet care',
+      content: clinicInfo?.name || 'Vet care',
     },
     {
       src: icons.clinicPhone,
@@ -28,7 +28,7 @@ const ClinicCard = ({ clinicInfo, setHighlightedMarker }) => {
     },
     {
       src: icons.location,
-      content: clinicInfo.vicinity,
+      content: clinicInfo?.vicinity,
       onClick: true,
       onClickFunction: onAddressClick,
     },
@@ -57,7 +57,7 @@ const ClinicCard = ({ clinicInfo, setHighlightedMarker }) => {
     <>
       <Card
         onMouseEnter={() => {
-          setHighlightedMarker(clinicInfo.name)
+          setHighlightedMarker(clinicInfo?.name || '')
         }}
         onMouseLeave={() => {
           setHighlightedMarker('')

@@ -5,8 +5,8 @@ import { Backdrop, Button, CircularProgress, Grid, TextField } from '@material-u
 // import vets from './vets.json'
 import locationMarkerIcon from './location.png'
 // import VetInfo from './VetInfo/VetInfo'
-import Clinic from './Clinic/Clinic'
-import { serverInstance } from '../instances'
+import Clinic from '../Clinic/Clinic'
+import { serverInstance } from '../../instances'
 
 const AnotherMap = (props) => {
   const { google } = props
@@ -26,7 +26,7 @@ const AnotherMap = (props) => {
     lat: -36.8505321,
     lng: 174.7825924,
   })
-  const [highlightedMarker, setHighlightedMarker] = useState('Veterinary Specialist Group')
+  const [highlightedMarker, setHighlightedMarker] = useState('')
 
   const [transportMode, setTransportMode] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
