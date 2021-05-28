@@ -4,6 +4,6 @@ import App from '../pages/App'
 
 test('renders welcome page', () => {
   render(<App />)
-  const linkElement = screen.getByText(/ULTIMATE GAME CENTER/i)
+  const linkElement = screen.getByText(/Find a vet/i)
   expect(linkElement).toBeInTheDocument()
 })
