@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import { Redirect, useHistory } from 'react-router-dom'
 import uuid from 'react-uuid'
-import { isMobile } from 'react-device-detect'
 import Carousel from 'react-elastic-carousel'
 import { Typography } from '@material-ui/core'
 
@@ -11,38 +10,21 @@ import questionForm from './questionForm'
 import './Questions.scss'
 import { icons } from '../../utils'
 
-const steps = {
-  emergency: 0,
-  species: 1,
-  service: 2,
-  priceRange: 3,
-  rating: 4,
-  language: 5,
-}
-
 function Questions(props) {
   const [answers, setAnwsers] = useState({})
-  const [currentStep, setCurrentStep] = useState('emergency')
-  const [answerErrors, setAnswerError] = useState(null)
-  const ref = useRef()
+  const [currentStep, setCurrentStep] = useState(0)
   const history = useHistory()
 
-  const onNextPage = (step) => {
-    if (step === 'completed') {
+  const onNextPage = (nextStep) => {
+    if (!nextStep) {
       history.push('/find/clinics', answers)
     } else {
-      setCurrentStep(step)
-      if (ref && ref.current) {
-        ref.current.next()
-      }
+      currentStep.slideNext()
     }
   }
 
-  const onGoBackHandler = () => {
-    // setCurrentStep(step);
-    if (ref && ref.current) {
-      ref.current.prev()
-    }
+  const skipAnswer = () => {
+    history.push('/find/clinics', answers)
   }
 
   const updateAwnser = (step, answerOption, nextStep) => {
@@ -50,30 +32,29 @@ function Questions(props) {
     tempAnswer[`${step}`] = answerOption.answer || answerOption.value
 
     setAnwsers(tempAnswer)
-    ref.goTo(nextStep)
+
+    localStorage.setItem(step, tempAnswer[`${step}`])
+
+    onNextPage(nextStep)
   }
 
-  const scrollToRef = (reference) => {
-    // console.log(ref)
-    // if (ref.current) {
-    //   ref.current.scrollIntoView();
-    // }
-  }
-
-  const renderQuestionBoxed = () => {
+  const renderQuestionBoxes = () => {
     return questionForm.map((question, index) => (
       <div>
         <QuestionBox
           key={uuid()}
-          scrollToRef={scrollToRef}
-          onNextHandler={onNextPage}
           onAnswerUpdate={updateAwnser}
-          onGoBackHandler={onGoBackHandler}
+          onGoBackHandler={() => currentStep.slidePrev()}
           question={question}
-          nextQuestion={questionForm[index]}
+          nextQuestion={questionForm[index + 1] || ''}
+          skipAnswer={skipAnswer}
         />
       </div>
     ))
+  }
+
+  if (localStorage.getItem(questionForm[0].step)) {
+    return <Redirect to="/find/services" />
   }
 
   return (
@@ -84,8 +65,8 @@ function Questions(props) {
         </Typography>
         <img className="small-logo" src={icons.heartQuestions} alt="Heart" />
       </div>
-      <Carousel ref={ref} showEmptySlots={false} showArrows={false} style={{ display: 'block' }}>
-        {renderQuestionBoxed()}
+      <Carousel ref={(currentRef) => setCurrentStep(currentRef)} showEmptySlots={false} showArrows={false}>
+        {renderQuestionBoxes()}
       </Carousel>
     </div>
   )

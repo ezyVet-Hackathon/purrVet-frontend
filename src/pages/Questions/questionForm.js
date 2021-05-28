@@ -79,22 +79,22 @@ const questions = [
     },
     options: [
       {
-        answer: '10 - 50',
+        answer: '10 - 50 NZD',
       },
       {
-        answer: '50 - 100',
+        answer: '50 - 100 NZD',
       },
       {
-        answer: '100 - 500',
+        answer: '100 - 500 NZD',
       },
       {
-        answer: '500 - 1000',
+        answer: '500 - 1000 NZD',
       },
       {
-        answer: '1000 - 5000',
+        answer: '1000 - 5000 NZD',
       },
       {
-        answer: '5000+',
+        answer: '5000+ NZD',
       },
     ],
   },

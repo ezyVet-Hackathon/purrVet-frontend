@@ -2,10 +2,8 @@ import { Typography } from '@material-ui/core'
 import React, { useRef, useState } from 'react'
 import uuid from 'react-uuid'
 
-import { icons } from '../../utils'
-
-function QuestionBox({ scrollToRef, onNextHandler, onAnswerUpdate, onGoBackHandler, question, nextQuestion }) {
-  const ref = useRef(null)
+function QuestionBox({ skipAnswer, onAnswerUpdate, onGoBackHandler, question, nextQuestion }) {
+  const nextRef = useRef(null)
 
   const renderOptionAnswer = (optionAnswer) => (
     <button
@@ -55,9 +53,14 @@ function QuestionBox({ scrollToRef, onNextHandler, onAnswerUpdate, onGoBackHandl
 
       {renderOptions(question.options)}
 
-      <button type="button" className="square-box">
-        Done
-      </button>
+      <div ref={nextRef}>
+        <button type="button" className="btn" onClick={() => onGoBackHandler()}>
+          Back
+        </button>
+        <button type="button" className="btn" onClick={() => skipAnswer()}>
+          Go to map
+        </button>
+      </div>
     </div>
   )
 }
