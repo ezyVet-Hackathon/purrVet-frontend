@@ -3,11 +3,13 @@ import { Redirect, useHistory } from 'react-router-dom'
 import uuid from 'react-uuid'
 import { isMobile } from 'react-device-detect'
 import Carousel from 'react-elastic-carousel'
+import { Typography } from '@material-ui/core'
 
 import QuestionBox from './QuestionBox'
 import questionForm from './questionForm'
 
 import './Questions.scss'
+import { icons } from '../../utils'
 
 const steps = {
   emergency: 0,
@@ -17,14 +19,6 @@ const steps = {
   rating: 4,
   language: 5,
 }
-
-const items = [
-  { id: 1, title: 'item #1' },
-  { id: 2, title: 'item #2' },
-  { id: 3, title: 'item #3' },
-  { id: 4, title: 'item #4' },
-  { id: 5, title: 'item #5' },
-]
 
 function Questions(props) {
   const [answers, setAnwsers] = useState({})
@@ -76,7 +70,7 @@ function Questions(props) {
           key={uuid()}
           scrollToRef={scrollToRef}
           onNextHandler={onNextPage}
-          onOnboardingUpdate={updateAwnser}
+          onAnswerUpdate={updateAwnser}
           onGoBackHandler={onGoBackHandler}
           question={question}
           nextQuestion={questionForm[index]}
@@ -85,7 +79,17 @@ function Questions(props) {
     ))
   }
 
-  return <Carousel>{renderQuestionBoxed()}</Carousel>
+  return (
+    <div>
+      <div className="question-title-container">
+        <Typography className="question-title" variant="h3">
+          Let us find your perfect vet
+        </Typography>
+        <img className="small-logo" src={icons.heartQuestions} alt="Heart" />
+      </div>
+      <Carousel>{renderQuestionBoxed()}</Carousel>
+    </div>
+  )
 }
 
 export default Questions

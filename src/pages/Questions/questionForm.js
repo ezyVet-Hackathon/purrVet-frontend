@@ -6,10 +6,13 @@ const questions = [
     question: 'Is your pet in an emergency?',
     options: [
       {
+        src: icons.no,
+      },
+      {
         src: icons.yes,
       },
       {
-        src: icons.no,
+        src: icons.notSure,
       },
     ],
   },
@@ -27,7 +30,7 @@ const questions = [
       },
       {
         src: icons.rabbit,
-        answer: 'smallAnimal',
+        answer: 'small animal',
       },
       {
         src: icons.horse,
@@ -35,11 +38,11 @@ const questions = [
       },
       {
         src: icons.turtle,
-        answer: 'marineAnimal',
+        answer: 'marine animal',
       },
       {
         src: icons.cow,
-        answer: 'largeAnimal',
+        answer: 'large animal',
       },
     ],
   },
@@ -49,19 +52,19 @@ const questions = [
     options: [
       {
         src: icons.petShop,
-        answer: 'petShop',
+        answer: 'Pet Shop',
       },
       {
         src: icons.petClinic,
-        answer: 'petClinic',
+        answer: 'Pet Clinic',
       },
       {
         src: icons.petTrain,
-        answer: 'petTrain',
+        answer: 'Pet Train',
       },
       {
         src: icons.petCare,
-        answer: 'petCare',
+        answer: 'Pet Care',
       },
     ],
   },

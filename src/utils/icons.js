@@ -19,6 +19,7 @@ import vetMail from '../assets/icons/vet-mail.png'
 import heartQuestions from '../assets/icons/heart-questions.png'
 import yes from '../assets/icons/yes.png'
 import no from '../assets/icons/no.png'
+import notSure from '../assets/icons/not-sure.png'
 import dog from '../assets/icons/dog.png'
 import cat from '../assets/icons/cat.png'
 import rabbit from '../assets/icons/rabbit.png'
@@ -47,6 +48,7 @@ const icons = {
   heartQuestions,
   yes,
   no,
+  notSure,
   dog,
   cat,
   rabbit,
