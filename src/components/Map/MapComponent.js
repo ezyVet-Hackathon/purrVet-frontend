@@ -249,7 +249,7 @@ const AnotherMap = (props) => {
       >
         {filterVets.map((c) => {
           return (
-            <Grid item xs={6} sm={4} md={3} lg={2}>
+            <Grid item xs={12} sm={4} md={3} lg={2}>
               <Clinic clinicInfo={c} setHighlightedMarker={setHighlightedMarker} />
             </Grid>
           )

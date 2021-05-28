@@ -1,5 +1,18 @@
 import React from 'react'
-import { Grid, Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions } from '@material-ui/core'
+import {
+  Grid,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Typography,
+  Button,
+  CardActions,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from '@material-ui/core'
 import { icons } from '../../utils'
 
 import './Clinic.scss'
@@ -53,6 +66,19 @@ const ClinicCard = ({ clinicInfo, setHighlightedMarker }) => {
     </div>
   )
 
+  const renderInfoNew = (clinic) => (
+    <>
+      <List>
+        <ListItem>
+          <ListItemIcon>
+            <img src={clinic.src} alt="clinic-info" />
+          </ListItemIcon>
+          <ListItemText primary={clinic.content} />
+        </ListItem>
+      </List>
+    </>
+  )
+
   return (
     <>
       <Card
@@ -81,7 +107,7 @@ const ClinicCard = ({ clinicInfo, setHighlightedMarker }) => {
               across all continents except Antarctica
           </Typography> */}
           <div>
-            {clinicMock.map((clinic) => renderInfo(clinic))}
+            {clinicMock.map((clinic) => renderInfoNew(clinic))}
 
             {/* <div className="clinic-box location-container">
               <img src={icons.location} alt="location" />
