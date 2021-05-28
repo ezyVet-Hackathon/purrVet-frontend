@@ -1,0 +1,50 @@
+@import '../../assets/styles/Global.scss';
+
+@mixin chooseCard($width, $height) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $height;
+  width: $width;
+  background-color: '#6CE5D5';
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 900px) {
+  .container-three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .container-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.big-square-card {
+  @include chooseCard(3rem, 3rem);
+}
+
+.small-square-card {
+  @include chooseCard(2rem, 2rem);
+}
+
+.rectangle-card {
+  @include chooseCard(3rem, 2rem);
+}
+
+// QUESTION BOX
+
+.questionBox {
+  @include flexCenterColumn();
+  background-color: #dcfdf9;
+}
+
+.optionAnswer {
+  color: '#001446';
+}

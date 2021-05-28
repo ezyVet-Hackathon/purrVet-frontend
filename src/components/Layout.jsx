@@ -52,12 +52,14 @@ const ezyVetLogo = (
 )
 
 const demoButton = (
-  <button className="btn find-vet" type="button">
-    Find a Vet
-  </button>
+  <a href="/find">
+    <button className="btn find-vet" type="button">
+      Find a Vet
+    </button>
+  </a>
 )
 
-export default function Layout() {
+function Layout({ children }) {
   const [state, setState] = useState({
     mobileView: false,
     drawerOpen: false,
@@ -140,8 +142,11 @@ export default function Layout() {
   }
 
   return (
-    <header>
+    <div className="container">
       <AppBar className="header">{mobileView ? displayMobile() : displayDesktop()}</AppBar>
-    </header>
+      {children}
+    </div>
   )
 }
+
+export default Layout
