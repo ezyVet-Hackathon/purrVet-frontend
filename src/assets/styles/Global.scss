@@ -18,11 +18,43 @@
   background: #555;
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Acme', 'Abel', 'Segoe UI', 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --ff-primary: 'Arial', sans-serif;
+
+  --fw-reg: 300;
+  --fw-bold: 500;
+
+  --clr-light: #eee;
+  --clr-dark: #11214c;
+  --clr-accent: #47bfaf;
+
+  --fs-h1: 2.5rem;
+  --fs-h2: 2rem;
+  --fs-h3: 1.5rem;
+  --fs-body: 1.2rem;
+  --fs-small: 0.6rem;
+
+  --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25), 0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 800px) {
+  :root {
+    --fs-h1: 4rem;
+    --fs-h2: 3rem;
+    --fs-h3: 2rem;
+    --fs-body: 1.5rem;
+    --fs-small: 1rem;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 code {

@@ -1,0 +1,31 @@
+.clinic-card {
+  display: flex;
+  max-width: 20vw;
+  flex-direction: column;
+}
+
+img {
+  max-width: 3vw;
+}
+
+.clinic-img {
+  max-width: 20vw;
+  border-radius: 10px;
+}
+
+.clinic-box {
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  max-width: 20vw;
+  font-size: large;
+
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}

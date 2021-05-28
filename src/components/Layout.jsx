@@ -1,12 +1,4 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
-import { Container } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,20 +18,31 @@ function Layout(props) {
   const { children } = props
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
 
-      <Container>{children}</Container>
+    <div>
+      <div className="navbar">
+        <div className="logo-container">
+          <img className="logo" src={icons.ezyvet} alt="logo" />
+          <span className="hamburger"> </span>
+        </div>
+
+        <div className="navbar-link-button" position="static">
+          <div className="menu-container">
+            <div>Product</div>
+            <div>Resources</div>
+            <div>About us</div>
+            <div>Career</div>
+            <a href="/find">Find a vet</a>
+          </div>
+
+          <div className="demo-button-container">
+            <button type="button" className="demo-button">
+              Book a demo
+            </button>
+          </div>
+        </div>
+      </div>
+      {children}
     </div>
   )
 }
