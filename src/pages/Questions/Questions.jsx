@@ -1,29 +1,44 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
+import uuid from 'react-uuid'
 import { isMobile } from 'react-device-detect'
-import { Carousel } from 'antd'
+import Carousel from 'react-elastic-carousel'
 
 import QuestionBox from './QuestionBox'
 import questionForm from './questionForm'
 
 import './Questions.scss'
 
+const steps = {
+  emergency: 0,
+  species: 1,
+  service: 2,
+  priceRange: 3,
+  rating: 4,
+  language: 5,
+}
+
+const items = [
+  { id: 1, title: 'item #1' },
+  { id: 2, title: 'item #2' },
+  { id: 3, title: 'item #3' },
+  { id: 4, title: 'item #4' },
+  { id: 5, title: 'item #5' },
+]
+
 function Questions(props) {
-  const [onboarding, setOnboarding] = useState({})
+  const [answers, setAnwsers] = useState({})
   const [currentStep, setCurrentStep] = useState('emergency')
-  const [redirect, setRedirect] = useState(false)
-  const [completeOnboarding, setCompleteOnboarding] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [onboardingError, setOnboardingError] = useState(null)
+  const [answerErrors, setAnswerError] = useState(null)
   const ref = useRef()
+  const history = useHistory()
 
   const onNextPage = (step) => {
     if (step === 'completed') {
-      //
+      history.push('/find/clinics', answers)
     } else {
       setCurrentStep(step)
       if (ref && ref.current) {
-        // this 'ref' has access to 'goTo', 'prev' and 'next'
         ref.current.next()
       }
     }
@@ -32,16 +47,15 @@ function Questions(props) {
   const onGoBackHandler = () => {
     // setCurrentStep(step);
     if (ref && ref.current) {
-      // this 'ref' has access to 'goTo', 'prev' and 'next'
       ref.current.prev()
     }
   }
 
-  const updateOnboarding = (onboardingOption, callback = null) => {
-    const tempOnboarding = { ...onboarding }
-    tempOnboarding[`${onboardingOption.key}`] = onboardingOption.value
+  const updateAwnser = (answerOption, callback = null) => {
+    const tempAnswer = { ...answers }
+    tempAnswer[`${answerOption.key}`] = answerOption.value
 
-    setOnboarding(tempOnboarding)
+    setAnwsers(tempAnswer)
 
     if (callback) {
       callback()
@@ -55,40 +69,23 @@ function Questions(props) {
     // }
   }
 
-  const confirmAndRedirectToProfile = () => {
-    setRedirect(true)
+  const renderQuestionBoxed = () => {
+    return questionForm.map((question, index) => (
+      <div>
+        <QuestionBox
+          key={uuid()}
+          scrollToRef={scrollToRef}
+          onNextHandler={onNextPage}
+          onOnboardingUpdate={updateAwnser}
+          onGoBackHandler={onGoBackHandler}
+          question={question}
+          nextQuestion={questionForm[index]}
+        />
+      </div>
+    ))
   }
 
-  return (
-    <div className="question-container">
-      <Carousel dotPosition="top" ref={ref} arrows={false} dots touchMove={false}>
-        <div>
-          <QuestionBox
-            scrollToRef={scrollToRef}
-            onNextHandler={onNextPage}
-            onOnboardingUpdate={updateOnboarding}
-            onGoBackHandler={onGoBackHandler}
-          />
-        </div>
-        <div>
-          <QuestionBox
-            scrollToRef={scrollToRef}
-            onNextHandler={onNextPage}
-            onOnboardingUpdate={updateOnboarding}
-            onGoBackHandler={onGoBackHandler}
-          />
-        </div>
-        <div>
-          <QuestionBox
-            scrollToRef={scrollToRef}
-            onNextHandler={onNextPage}
-            onOnboardingUpdate={updateOnboarding}
-            onGoBackHandler={onGoBackHandler}
-          />
-        </div>
-      </Carousel>
-    </div>
-  )
+  return <Carousel>{renderQuestionBoxed()}</Carousel>
 }
 
 export default Questions

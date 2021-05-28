@@ -12,6 +12,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  background-color: #031e45;
 }
 
 @media (min-width: 900px) {
@@ -42,9 +43,22 @@
 
 .questionBox {
   @include flexCenterColumn();
+
   background-color: #dcfdf9;
+  width: 50vw;
+  height: 50vh;
+  margin-top: 10%;
+  border-radius: 15px;
 }
 
 .optionAnswer {
   color: '#001446';
+}
+
+.optionImage {
+  width: 40vw;
+}
+
+.button-icon {
+  background-color: '#6CE5D5';
 }
