@@ -15,6 +15,22 @@
   background-color: #031e45;
 }
 
+.question-title-container {
+  @include flexCenter();
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.question-title {
+  color: white;
+  text-align: center;
+}
+
+.small-logo {
+  margin-left: 2rem;
+  max-width: 6%;
+}
+
 @media (min-width: 900px) {
   .container-three-col {
     display: grid;
@@ -40,25 +56,63 @@
 }
 
 // QUESTION BOX
-
-.questionBox {
+.question-box {
   @include flexCenterColumn();
 
   background-color: #dcfdf9;
-  width: 50vw;
-  height: 50vh;
+  min-width: 50vw;
+  min-height: 50vh;
   margin-top: 10%;
   border-radius: 15px;
+  padding: 2rem;
 }
 
-.optionAnswer {
+.question-box-tilte {
+  @include flexCenterColumn();
+}
+
+.question-name {
+  margin: 4rem;
+}
+
+.option-answer {
   color: '#001446';
 }
 
-.optionImage {
+.option-image {
   width: 40vw;
 }
 
-.button-icon {
-  background-color: '#6CE5D5';
+button {
+  border: none;
+  margin: 1rem;
+}
+
+.square-box {
+  background-color: $clr-accent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 70vw;
+}
+
+.option-answer-button {
+  min-width: 90%;
+  min-height: 5vh;
+  background-color: #a9efe6;
+  color: '#001446';
+  font-size: large;
+  text-transform: capitalize;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.option-icon-button {
+  max-width: 19vw;
+  height: 20vh;
+  background-color: $clr-accent;
+}
+
+.option-icon-button img {
+  max-width: 25%;
 }
