@@ -1,0 +1,50 @@
+@import '../assets/styles/Global.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  justify-content: stretch;
+  width: 100vw;
+}
+
+.logo {
+  background-color: '#47BFAF';
+  max-width: 7vw;
+  z-index: inherit;
+  margin-left: 3vw;
+}
+
+.navbar {
+  @include flexCenter();
+  background-color: #031e45;
+  height: 10vh;
+  color: white;
+  justify-content: space-between;
+}
+
+.menu-option-container {
+  display: flex;
+  width: 80vw;
+  //   background-color: white;
+}
+
+.menu-container {
+  display: flex;
+  justify-content: space-between;
+  width: 50vw;
+}
+
+.navbar-link-button {
+  display: flex;
+  width: 80vw;
+  justify-content: space-between;
+}
+
+.demo-button {
+  text-transform: uppercase;
+  background-color: '#47BFAF';
+}
