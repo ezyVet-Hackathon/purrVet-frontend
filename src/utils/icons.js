@@ -9,6 +9,10 @@ import clinicName from '../assets/icons/clinic-name.png'
 import clinicStar from '../assets/icons/clinic-star.png'
 import clinicPhone from '../assets/icons/clinic-phone.png'
 import location from '../assets/icons/location.png'
+import vet from '../assets/icons/vet.png'
+import vetName from '../assets/icons/vet-name.png'
+import vetRegister from '../assets/icons/vet-register.png'
+import vetMail from '../assets/icons/vet-mail.png'
 
 const icons = {
   ezyvet,
@@ -22,6 +26,10 @@ const icons = {
   clinicStar,
   clinicPhone,
   location,
+  vet,
+  vetName,
+  vetRegister,
+  vetMail,
 }
 
 export default icons
