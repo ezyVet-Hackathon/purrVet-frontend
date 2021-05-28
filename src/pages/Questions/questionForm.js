@@ -7,12 +7,15 @@ const questions = [
     options: [
       {
         src: icons.no,
+        value: 'no',
       },
       {
         src: icons.yes,
+        value: 'yes',
       },
       {
         src: icons.notSure,
+        value: 'not sure',
       },
     ],
   },

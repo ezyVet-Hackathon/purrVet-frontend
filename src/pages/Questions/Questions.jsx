@@ -45,15 +45,12 @@ function Questions(props) {
     }
   }
 
-  const updateAwnser = (answerOption, callback = null) => {
+  const updateAwnser = (step, answerOption, nextStep) => {
     const tempAnswer = { ...answers }
-    tempAnswer[`${answerOption.key}`] = answerOption.value
+    tempAnswer[`${step}`] = answerOption.answer || answerOption.value
 
     setAnwsers(tempAnswer)
-
-    if (callback) {
-      callback()
-    }
+    ref.goTo(nextStep)
   }
 
   const scrollToRef = (reference) => {
@@ -87,7 +84,7 @@ function Questions(props) {
         </Typography>
         <img className="small-logo" src={icons.heartQuestions} alt="Heart" />
       </div>
-      <Carousel showEmptySlots={false} showArrows={false} style={{ display: 'block' }}>
+      <Carousel ref={ref} showEmptySlots={false} showArrows={false} style={{ display: 'block' }}>
         {renderQuestionBoxed()}
       </Carousel>
     </div>

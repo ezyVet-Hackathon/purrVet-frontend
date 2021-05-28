@@ -5,17 +5,25 @@ import uuid from 'react-uuid'
 import { icons } from '../../utils'
 
 function QuestionBox({ scrollToRef, onNextHandler, onAnswerUpdate, onGoBackHandler, question, nextQuestion }) {
-  const myRef = useRef(null)
+  const ref = useRef(null)
 
-  const renderOptionAnswer = (answer) => (
-    <button className="option-answer-button" type="button">
-      {answer}
+  const renderOptionAnswer = (optionAnswer) => (
+    <button
+      className="option-answer-button"
+      type="button"
+      onClick={() => onAnswerUpdate(question.step, optionAnswer, nextQuestion)}
+    >
+      {optionAnswer.answer}
     </button>
   )
 
-  const renderOptionIcon = (icon) => (
-    <button className="option-icon-button square-box" type="button" onClick={onAnswerUpdate}>
-      <img src={icon} alt="Option icon" className="option-image" />
+  const renderOptionIcon = (optionAnswer) => (
+    <button
+      className="option-icon-button square-box"
+      type="button"
+      onClick={() => onAnswerUpdate(question.step, optionAnswer, nextQuestion)}
+    >
+      <img src={optionAnswer.src} alt="Option icon" className="option-image" />
     </button>
   )
 
@@ -26,12 +34,12 @@ function QuestionBox({ scrollToRef, onNextHandler, onAnswerUpdate, onGoBackHandl
     }
 
     return (
-      <div className={`container${gridColumn}`}>
+      <div key={uuid()} className={`container${gridColumn}`}>
         {options.map((option) => {
           return (
             <div key={uuid()}>
-              {option.src ? renderOptionIcon(option.src) : null}
-              {option.answer ? renderOptionAnswer(option.answer) : null}
+              {option.src ? renderOptionIcon(option) : null}
+              {option.answer ? renderOptionAnswer(option) : null}
             </div>
           )
         })}
