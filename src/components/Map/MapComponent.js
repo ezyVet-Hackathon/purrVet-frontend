@@ -160,7 +160,7 @@ const AnotherMap = (props) => {
   }
 
   return (
-    <>
+    <div style={{ backgroundColor: 'white' }}>
       <h1>Test</h1>
       <Grid container spacing={3}>
         <Grid item xs={12}>
@@ -258,7 +258,7 @@ const AnotherMap = (props) => {
       <Backdrop style={{ zIndex: 10000 }} open={loading}>
         <CircularProgress />
       </Backdrop>
-    </>
+    </div>
   )
 }
 
