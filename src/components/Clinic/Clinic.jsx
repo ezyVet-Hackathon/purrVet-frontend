@@ -3,31 +3,40 @@ import { icons } from '../../utils'
 
 import './Clinic.scss'
 
-function Clinic(props) {
+function Clinic({ clinicInfo }) {
+  const clinicMock = [
+    {
+      src: icons.clinicName,
+      content: 'Vet care',
+    },
+    {
+      src: icons.clinicPhone,
+      content: '(+64) 234-567-809',
+    },
+    {
+      src: icons.clinicHour,
+      content: '8:00am - 2:00pm',
+    },
+    {
+      src: icons.clinicStar,
+      content: '3.5',
+    },
+  ]
+
+  const renderInfo = (src, content) => (
+    <div className="clinic-box">
+      <img src={src} alt="clinic-info" />
+      <div>{content}</div>
+    </div>
+  )
+
   return (
     <div className="clinic-card">
-      <img className="clinic-img" src={icons.clinic} alt="clinic" />
-
+      <a href="/find/service/vets">
+        <img className="clinic-img" src={icons.clinic} alt="clinic" />
+      </a>
       <div>
-        <div className="clinic-box">
-          <img src={icons.clinicName} alt="clinicName" />
-          <div>Vet care</div>
-        </div>
-
-        <div className="clinic-box">
-          <img src={icons.clinicPhone} alt="clinicPhone" />
-          <div>(+64) 234-567-809</div>
-        </div>
-
-        <div className="clinic-box">
-          <img src={icons.clinicHour} alt="clinicHour" />
-          <div>8:00am - 2:00pm</div>
-        </div>
-
-        <div className="clinic-box">
-          <img src={icons.clinicStar} alt="clinicStar" />
-          <div>3.5</div>
-        </div>
+        {clinicMock.map((clinic) => renderInfo(clinic.src, clinic.content))}
 
         <div className="clinic-box location-container">
           <img src={icons.location} alt="location" />
