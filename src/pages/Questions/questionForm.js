@@ -48,7 +48,7 @@ const questions = [
   },
   {
     step: 'service',
-    question: 'What is your pet species?',
+    question: 'What type of service do you need?',
     options: [
       {
         src: icons.petShop,
@@ -113,6 +113,9 @@ const questions = [
       },
       {
         answer: '5 stars',
+      },
+      {
+        answer: 'All rates',
       },
     ],
   },

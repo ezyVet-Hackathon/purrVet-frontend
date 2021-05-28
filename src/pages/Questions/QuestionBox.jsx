@@ -1,5 +1,5 @@
 import { Typography } from '@material-ui/core'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import uuid from 'react-uuid'
 
 import { icons } from '../../utils'
@@ -46,6 +46,10 @@ function QuestionBox({ scrollToRef, onNextHandler, onAnswerUpdate, onGoBackHandl
       </Typography>
 
       {renderOptions(question.options)}
+
+      <button type="button" className="square-box">
+        Done
+      </button>
     </div>
   )
 }

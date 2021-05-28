@@ -87,7 +87,9 @@ function Questions(props) {
         </Typography>
         <img className="small-logo" src={icons.heartQuestions} alt="Heart" />
       </div>
-      <Carousel>{renderQuestionBoxed()}</Carousel>
+      <Carousel showEmptySlots={false} showArrows={false} style={{ display: 'block' }}>
+        {renderQuestionBoxed()}
+      </Carousel>
     </div>
   )
 }
