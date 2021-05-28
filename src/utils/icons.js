@@ -1,7 +1,3 @@
-import ezyvet from '../assets/icons/ezyVet.png'
-
-const icons = {
-  ezyvet,
-}
+const icons = {}
 
 export default icons
