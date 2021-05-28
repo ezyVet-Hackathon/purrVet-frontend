@@ -1,6 +1,4 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Container } from '@material-ui/core'
 
 import { icons } from '../utils'
 import './Components.scss'
@@ -11,8 +9,9 @@ function Layout(props) {
   return (
     <div>
       <div className="navbar">
-        <div>
+        <div className="logo-container">
           <img className="logo" src={icons.ezyvet} alt="logo" />
+          <span className="hamburger"> </span>
         </div>
 
         <div className="navbar-link-button" position="static">
@@ -25,11 +24,9 @@ function Layout(props) {
           </div>
 
           <div className="demo-button-container">
-            <a href="/find/service">
-              <button type="button" className="demo-button">
-                Book a demo
-              </button>
-            </a>
+            <button type="button" className="demo-button">
+              Book a demo
+            </button>
           </div>
         </div>
       </div>
