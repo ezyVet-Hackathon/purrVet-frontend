@@ -1,0 +1,182 @@
+[
+    {
+        "name": "Royal Oak Veterinary Care",
+        "place_id": "ChIJsRkNbhxGDW0R1GYJwZDaxIw",
+        "vicinity": "649 Mount Albert Rd, Royal Oak, Auckland",
+        "location": {
+            "lat": -36.9107212,
+            "lng": 174.7689044
+        }
+    },
+    {
+        "name": "Veterinary Specialist Group",
+        "place_id": "ChIJ_XuvKiBHDW0RDUuEq1Xl_Rk",
+        "vicinity": "97 Carrington Rd, Mount Albert, Auckland",
+        "location": {
+            "lat": -36.8769998,
+            "lng": 174.7102575
+        }
+    },
+    {
+        "name": "Western Veterinary",
+        "place_id": "ChIJ4yfipslGDW0RNOjOYrEmtR0",
+        "vicinity": "2021 Great N Rd, Avondale, Auckland",
+        "location": {
+            "lat": -36.8979711,
+            "lng": 174.6967128
+        }
+    },
+    {
+        "name": "Veterinary Specialists Auckland",
+        "place_id": "ChIJx8_y3FNJDW0Rk4Zr_P94QKI",
+        "vicinity": "1 Te Apunga Pl, Mount Wellington, Auckland",
+        "location": {
+            "lat": -36.923944,
+            "lng": 174.849819
+        }
+    },
+    {
+        "name": "Auckland Pet Hospital",
+        "place_id": "ChIJIcep3ZVHDW0R88EyluNXcJI",
+        "vicinity": "46-48 Pollen St, Grey Lynn, Auckland",
+        "location": {
+            "lat": -36.8584545,
+            "lng": 174.7479343
+        }
+    },
+    {
+        "name": "St Lukes Veterinary Centre",
+        "place_id": "ChIJYZngBVVGDW0RKkNVJXmW2u0",
+        "vicinity": "13 Morningside Dr, Mount Albert, Auckland",
+        "location": {
+            "lat": -36.8766667,
+            "lng": 174.7353187
+        }
+    },
+    {
+        "name": "Auckland Veterinary Hospital",
+        "place_id": "ChIJDwR7dXNBDW0R9J3cctaMaF4",
+        "vicinity": "4143 Great N Rd, Glendene, Auckland",
+        "location": {
+            "lat": -36.9011007,
+            "lng": 174.6544409
+        }
+    },
+    {
+        "name": "Mangere Veterinary Clinic",
+        "place_id": "ChIJjbjVCGpPDW0RXDoz3rUEFD0",
+        "vicinity": "95 Coronation Rd, M\u0101ngere Bridge, Auckland",
+        "location": {
+            "lat": -36.947801,
+            "lng": 174.789788
+        }
+    },
+    {
+        "name": "Pet Doctors St Lukes & Exotics Centre",
+        "place_id": "ChIJ3d25U_9GDW0Rlb0BNUTUw7g",
+        "vicinity": "5 Wagener Pl, Mount Albert, Auckland",
+        "location": {
+            "lat": -36.8856567,
+            "lng": 174.7306838
+        }
+    },
+    {
+        "name": "Greenlane Veterinary Centre and Cattery",
+        "place_id": "ChIJ7xdheYlIDW0R46XMF7Qqjbs",
+        "vicinity": "246 Great South Rd, Greenlane, Auckland",
+        "location": {
+            "lat": -36.8860542,
+            "lng": 174.7886187
+        }
+    },
+    {
+        "name": "Swanson Rd Veterinary Clinic",
+        "place_id": "ChIJHbdXTiRADW0RLVmsW5zFfFI",
+        "vicinity": "269 Swanson Rd, Henderson, Auckland",
+        "location": {
+            "lat": -36.8613877,
+            "lng": 174.6130854
+        }
+    },
+    {
+        "name": "Bucklands Beach Veterinary Clinic",
+        "place_id": "ChIJXZFaSB1LDW0RyDu5MTHVz0Y",
+        "vicinity": "340 Bucklands Beach Rd, Bucklands Beach, Auckland",
+        "location": {
+            "lat": -36.88952,
+            "lng": 174.909426
+        }
+    },
+    {
+        "name": "Veterinary Internal Medicine Specialist",
+        "place_id": "ChIJJcUMLSBHDW0RjrLTzsltNsU",
+        "vicinity": "97 Carrington Rd, Mount Albert, Auckland",
+        "location": {
+            "lat": -36.8770609,
+            "lng": 174.7100443
+        }
+    },
+    {
+        "name": "The Strand Veterinarian",
+        "place_id": "ChIJPbtydgVIDW0RoLGPPZg9-6w",
+        "vicinity": "Textile Centre 1 Kenwyn St, Parnell, Auckland",
+        "location": {
+            "lat": -36.8505321,
+            "lng": 174.7825924
+        }
+    },
+    {
+        "name": "Veterinary Hospital Group",
+        "place_id": "ChIJeajuYENIDW0RZvD7hUJ29e4",
+        "vicinity": "228 Orakei Rd, Remuera, Auckland",
+        "location": {
+            "lat": -36.86334,
+            "lng": 174.8096341
+        }
+    },
+    {
+        "name": "Balmoral Veterinary Care",
+        "place_id": "ChIJ5dQyu0VGDW0Rp8r1WPXSWkQ",
+        "vicinity": "482 Dominion Rd, Mount Eden, Auckland",
+        "location": {
+            "lat": -36.8833981,
+            "lng": 174.7488541
+        }
+    },
+    {
+        "name": "Pet Doctors Support Office",
+        "place_id": "ChIJCy1snIxIDW0ReYXEUqVwUOk",
+        "vicinity": "46-48 Pollen St, Grey Lynn, Auckland",
+        "location": {
+            "lat": -36.858344,
+            "lng": 174.747711
+        }
+    },
+    {
+        "name": "Green Bay Veterinary Clinic",
+        "place_id": "ChIJv7Rnm_lDDW0RTw4Y2JNc2ng",
+        "vicinity": "2 Bishop St, Green Bay, Auckland",
+        "location": {
+            "lat": -36.929813,
+            "lng": 174.6852645
+        }
+    },
+    {
+        "name": "Hobsonville Veterinary Clinic",
+        "place_id": "ChIJCdfi0ak_DW0Rm3vlAj1UTsE",
+        "vicinity": "403 Hobsonville Rd, Hobsonville, Auckland",
+        "location": {
+            "lat": -36.7986041,
+            "lng": 174.6472937
+        }
+    },
+    {
+        "name": "Blockhouse Bay Veterinary Centre",
+        "place_id": "ChIJ03-4fR1EDW0RSQas3NtR-gE",
+        "vicinity": "24 Donovan St, Blockhouse Bay, Auckland",
+        "location": {
+            "lat": -36.9223047,
+            "lng": 174.702437
+        }
+    }
+]

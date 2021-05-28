@@ -14,10 +14,22 @@ const theme = createMuiTheme({
     },
     MuiButton: {
       root: {
-        backgroundColor: '#47BFAF',
+        '&:hover': {
+          backgroundColor: '#e77f8e',
+          color: '#fff',
+        },
       },
       text: {
+        background: '#e45a6e',
+        borderRadius: '20px',
+        border: 0,
         color: 'white',
+        height: 48,
+        padding: '0 30px',
+        textDecoration: 'none',
+        fontFamily: 'Abel',
+        textTransform: 'capitalize',
+        fontSize: '1.5em',
       },
     },
     MuiAlert: {

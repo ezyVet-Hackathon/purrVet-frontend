@@ -1,12 +1,24 @@
 import React from 'react'
 
-import { icons } from '../utils'
-import './Components.scss'
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+}))
 
 function Layout(props) {
+  const classes = useStyles()
+
   const { children } = props
 
   return (
+
     <div>
       <div className="navbar">
         <div className="logo-container">
@@ -30,7 +42,6 @@ function Layout(props) {
           </div>
         </div>
       </div>
-
       {children}
     </div>
   )
