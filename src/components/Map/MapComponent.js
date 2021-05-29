@@ -1,4 +1,3 @@
-// import { GoogleMap, Marker, withScriptjs, withGoogleMap, Google } from 'react-google-maps'
 import React, { createRef, useState, useEffect } from 'react'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 import {
@@ -19,9 +18,7 @@ import {
   DialogContent,
   DialogTitle,
 } from '@material-ui/core'
-// import vets from './vets.json'
 import locationMarkerIcon from './location.png'
-// import VetInfo from './VetInfo/VetInfo'
 import Clinic from '../Clinic/Clinic'
 import { serverInstance } from '../../instances'
 import { icons } from '../../utils'
@@ -41,8 +38,6 @@ const AnotherMap = (props) => {
   const [filterVets, setFilterVets] = useState([])
   const [loading, setLoading] = useState(false)
   const [currentLocation, setCurrentLocation] = useState({
-    // lat: -36.849761,
-    // lng: 174.7628903
     lat: -36.8505321,
     lng: 174.7825924,
   })
