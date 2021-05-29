@@ -29,6 +29,8 @@ import cow from '../assets/icons/cow.png'
 import nz from '../assets/icons/nz.png'
 import questionMark from '../assets/icons/question-mark.png'
 
+import currentLocationMarker from '../assets/icons/currentLocationMarker.png'
+
 const icons = {
   ezyvet,
   petShop: petshop,
@@ -57,6 +59,7 @@ const icons = {
   cow,
   nz,
   questionMark,
+  currentLocationMarker,
 }
 
 export default icons

@@ -1,12 +1,30 @@
 // import { GoogleMap, Marker, withScriptjs, withGoogleMap, Google } from 'react-google-maps'
 import React, { createRef, useState, useEffect } from 'react'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
-import { Backdrop, Button, CircularProgress, Grid, TextField } from '@material-ui/core'
+import {
+  Backdrop,
+  Button,
+  CircularProgress,
+  Grid,
+  TextField,
+  Modal,
+  List,
+  ListItem,
+  ListItemAvatar,
+  Avatar,
+  ListItemText,
+  Typography,
+  Divider,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from '@material-ui/core'
 // import vets from './vets.json'
 import locationMarkerIcon from './location.png'
 // import VetInfo from './VetInfo/VetInfo'
 import Clinic from '../Clinic/Clinic'
 import { serverInstance } from '../../instances'
+import { icons } from '../../utils'
 
 const AnotherMap = (props) => {
   const { google } = props
@@ -30,6 +48,8 @@ const AnotherMap = (props) => {
 
   const [transportMode, setTransportMode] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
+  const [showReviewModal, setShowReviewModal] = useState(false)
+  const [reviews, setReviews] = useState([])
 
   const getData = async (postObj) => {
     try {
@@ -43,20 +63,20 @@ const AnotherMap = (props) => {
     }
   }
 
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(
-  //     (position) => {
-  //       setCurrentLocation({
-  //         lat: position.coords.latitude,
-  //         lng: position.coords.longitude
-  //       })
-  //     },
-  //     (err) => {
-  //       console.error("error getCurrentPosition", err)
-  //       alert("Please allow the website to get your location to improve your experience!")
-  //     }
-  //   )
-  // }, [])
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setCurrentLocation({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        })
+      },
+      (err) => {
+        console.error('error getCurrentPosition', err)
+        alert('Please allow the website to get your location to improve your experience!')
+      }
+    )
+  }, [])
 
   const constructSearchObj = (boundResult) => {
     const searchObj = {
@@ -239,6 +259,17 @@ const AnotherMap = (props) => {
             />
           )
         })}
+        <Marker
+          name="Me"
+          position={{
+            lat: currentLocation.lat,
+            lng: currentLocation.lng,
+          }}
+          icon={{
+            url: icons.currentLocationMarker,
+            scaledSize: new google.maps.Size(15, 27),
+          }}
+        />
       </Map>
       <Grid
         container
@@ -250,7 +281,12 @@ const AnotherMap = (props) => {
         {filterVets.map((c) => {
           return (
             <Grid item xs={12} sm={4} md={3} lg={2}>
-              <Clinic clinicInfo={c} setHighlightedMarker={setHighlightedMarker} />
+              <Clinic
+                clinicInfo={c}
+                setHighlightedMarker={setHighlightedMarker}
+                setReviews={setReviews}
+                setShowReviewModal={setShowReviewModal}
+              />
             </Grid>
           )
         })}
@@ -258,6 +294,50 @@ const AnotherMap = (props) => {
       <Backdrop style={{ zIndex: 10000 }} open={loading}>
         <CircularProgress />
       </Backdrop>
+      <Dialog
+        open={showReviewModal}
+        onEscapeKeyDown={() => setShowReviewModal(false)}
+        onBackdropClick={() => setShowReviewModal(false)}
+      >
+        <DialogTitle onClose={() => setShowReviewModal(false)}>List of reviews</DialogTitle>
+        <DialogContent dividers>
+          <List>
+            {(reviews ?? []).length === 0 ? (
+              <Typography variant="body1">No data available for this clinic.</Typography>
+            ) : (
+              (reviews ?? []).map((c) => {
+                return (
+                  <>
+                    <ListItem alignItems="flex-start">
+                      <ListItemAvatar>
+                        <Avatar
+                          alt={c?.author_name ?? ''}
+                          src={c?.profile_photo_url ?? '/static/images/avatar/1.jpg'}
+                        />
+                      </ListItemAvatar>
+                      <ListItemText
+                        primary={c?.author_name ?? 'Name'}
+                        secondary={
+                          <>
+                            <Typography component="span" variant="body2" color="textPrimary">
+                              {`${c?.relative_time_description ?? ''} - `}
+                            </Typography>
+                            <Typography component="span" variant="body2" color="textPrimary">
+                              {`Rating: ${c?.rating ?? '4.7'} - `}
+                            </Typography>
+                            {c?.text ?? ''}
+                          </>
+                        }
+                      />
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                  </>
+                )
+              })
+            )}
+          </List>
+        </DialogContent>
+      </Dialog>
     </>
   )
 }
