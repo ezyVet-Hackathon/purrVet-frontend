@@ -1,7 +1,7 @@
 import { AppBar, Toolbar, Button, IconButton, Drawer, Link, MenuItem } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import React, { useState, useEffect } from 'react'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, useHistory } from 'react-router-dom'
 
 import './Components.scss'
 import { icons } from '../utils'
@@ -64,6 +64,8 @@ function Layout({ children }) {
     mobileView: false,
     drawerOpen: false,
   })
+
+  const history = useHistory()
 
   const { mobileView, drawerOpen } = state
 
@@ -144,6 +146,9 @@ function Layout({ children }) {
   return (
     <div className="container">
       <AppBar className="header">{mobileView ? displayMobile() : displayDesktop()}</AppBar>
+      <button type="button" className="back-button" onClick={() => history.goBack()}>
+        <img src={icons.back} alt="Back button" className="img-button" />
+      </button>
       {children}
     </div>
   )

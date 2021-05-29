@@ -26,6 +26,8 @@ import Clinic from '../Clinic/Clinic'
 import { serverInstance } from '../../instances'
 import { icons } from '../../utils'
 
+import './Map.scss'
+
 const AnotherMap = (props) => {
   const { google } = props
   const mapRef = createRef()

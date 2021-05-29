@@ -13,6 +13,7 @@
   justify-content: space-between;
   height: 15vh;
   position: relative;
+  border-bottom: 3px #47bfaf solid;
 }
 
 .logo-container {
@@ -42,4 +43,19 @@
     flex-grow: 0;
     margin: auto 4rem;
   }
+}
+
+.back-button {
+  background-color: inherit;
+  display: flex;
+  justify-content: flex-start;
+
+  :hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+}
+
+.img-button {
+  max-width: 3.5vw;
 }
