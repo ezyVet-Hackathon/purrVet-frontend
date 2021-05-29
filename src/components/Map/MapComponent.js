@@ -178,96 +178,74 @@ const AnotherMap = (props) => {
 
   return (
     <>
-      <h1>Test</h1>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <TextField
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            fullWidth
-            variant="outlined"
-            label="Search clinic here"
-          />
-        </Grid>
-        <Grid item xs={2}>
-          <Button
-            color="primary"
-            variant="contained"
-            onClick={() => {
-              setTransportMode('bus')
-            }}
-          >
-            Bus
-          </Button>
-        </Grid>
-        <Grid item xs={2}>
-          <Button color="primary" variant="contained">
-            Train
-          </Button>
-        </Grid>
-        <Grid item xs={2}>
-          <Button color="primary" variant="contained">
-            Walk
-          </Button>
-        </Grid>
-        <Grid item xs={12}>
-          <Button color="primary" variant="contained" onClick={() => handleSearch()}>
-            Search
-          </Button>
-        </Grid>
-      </Grid>
-      <Map
-        google={google}
-        zoom={16}
-        ref={mapRef}
-        containerStyle={{
-          width: '100%',
-          height: '600px',
-          position: 'relative',
-        }}
-        initialCenter={currentLocation}
-        center={currentLocation}
-        gestureHandling={'cooperative' || 'greedy' || 'cooperative'}
-        onDragend={(propsMap, map) => {
-          handleMapEvent(propsMap, map)
-        }}
-        onZoomChanged={(propsMap, map) => {
-          handleMapEvent(propsMap, map)
-        }}
-        onReady={(propsMap, map) => {
-          handleMapReady(propsMap, map)
-        }}
-      >
-        {filterVets.map((c) => {
-          const scaledSizeGoogle =
-            highlightedMarker === c.name ? new google.maps.Size(40, 50) : new google.maps.Size(20, 30)
-          return (
-            <Marker
-              name={c.name}
-              position={{
-                lat: c.location.lat,
-                lng: c.location.lng,
-              }}
-              onClick={(propsMap, marker) => handleOnClick(propsMap, marker)}
-              icon={{
-                url: locationMarkerIcon,
-                scaledSize: scaledSizeGoogle,
-              }}
-            />
-          )
-        })}
-        <Marker
-          name="Me"
-          position={{
-            lat: currentLocation.lat,
-            lng: currentLocation.lng,
-          }}
-          icon={{
-            url: icons.currentLocationMarker,
-            scaledSize: new google.maps.Size(15, 27),
-          }}
+      <div className="input-search-container">
+        <TextField
+          className="search-input"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          fullWidth
+          variant="outlined"
+          label="Search clinic here"
         />
-      </Map>
+        <Button variant="contained" color="primary" onClick={() => handleSearch()}>
+          Search
+        </Button>
+      </div>
+
+      <div className="map">
+        <Map
+          google={google}
+          zoom={16}
+          ref={mapRef}
+          containerStyle={{
+            width: '100%',
+            height: '600px',
+            position: 'relative',
+          }}
+          initialCenter={currentLocation}
+          center={currentLocation}
+          gestureHandling={'cooperative' || 'greedy' || 'cooperative'}
+          onDragend={(propsMap, map) => {
+            handleMapEvent(propsMap, map)
+          }}
+          onZoomChanged={(propsMap, map) => {
+            handleMapEvent(propsMap, map)
+          }}
+          onReady={(propsMap, map) => {
+            handleMapReady(propsMap, map)
+          }}
+        >
+          {filterVets.map((c) => {
+            const scaledSizeGoogle =
+              highlightedMarker === c.name ? new google.maps.Size(40, 50) : new google.maps.Size(20, 30)
+            return (
+              <Marker
+                name={c.name}
+                position={{
+                  lat: c.location.lat,
+                  lng: c.location.lng,
+                }}
+                onClick={(propsMap, marker) => handleOnClick(propsMap, marker)}
+                icon={{
+                  url: locationMarkerIcon,
+                  scaledSize: scaledSizeGoogle,
+                }}
+              />
+            )
+          })}
+          <Marker
+            name="Me"
+            position={{
+              lat: currentLocation.lat,
+              lng: currentLocation.lng,
+            }}
+            icon={{
+              url: icons.currentLocationMarker,
+              scaledSize: new google.maps.Size(15, 27),
+            }}
+          />
+        </Map>
+      </div>
       <Grid
         container
         spacing={3}
