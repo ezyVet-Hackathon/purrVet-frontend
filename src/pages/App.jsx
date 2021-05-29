@@ -16,7 +16,7 @@ const App = (props) => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/map" component={MapPage} />
         <Route exact path="/find" component={Questions} />
-        <Route path="/clinics/:id" component={Clinic} />
+        <Route path="/clinics/:id" component={VetInfo} />
         <Route component={ErrorPage} />
       </Switch>
     </Layout>

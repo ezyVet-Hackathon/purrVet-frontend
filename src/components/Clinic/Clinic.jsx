@@ -13,23 +13,33 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@material-ui/core'
+import { useHistory } from 'react-router-dom'
 import { icons } from '../../utils'
 
 import './Clinic.scss'
 
-const ClinicCard = ({ clinicInfo, setHighlightedMarker }) => {
+const ClinicCard = ({ clinicInfo, setHighlightedMarker, setShowReviewModal, setReviews }) => {
+  const history = useHistory()
+
+  console.log(clinicInfo)
   const onAddressClick = () => {
     alert('Address was clicked')
+  }
+
+  const handleReviewClick = (reviewArr) => {
+    console.log('passed in', reviewArr)
+    setReviews(reviewArr)
+    setShowReviewModal(true)
   }
 
   const clinicMock = [
     {
       src: icons.clinicName,
-      content: clinicInfo?.name || 'Vet care',
+      content: clinicInfo?.name ?? 'Vet care',
     },
     {
       src: icons.clinicPhone,
-      content: '(+64) 234-567-809',
+      content: clinicInfo?.googleResults?.formatted_phone_number ?? '(+64) 234-567-809',
     },
     {
       src: icons.clinicHour,
@@ -37,7 +47,10 @@ const ClinicCard = ({ clinicInfo, setHighlightedMarker }) => {
     },
     {
       src: icons.clinicStar,
-      content: '3.5',
+      content: clinicInfo?.googleResults?.rating?.$numberDecimal ?? '3.5',
+      onClick: true,
+      onClickFunction: handleReviewClick,
+      params: clinicInfo?.googleResults?.reviews,
     },
     {
       src: icons.location,
@@ -47,25 +60,6 @@ const ClinicCard = ({ clinicInfo, setHighlightedMarker }) => {
     },
   ]
 
-  const renderInfo = (clinic) => (
-    <div className="clinic-box">
-      <img src={clinic.src} alt="clinic-info" />
-      <Typography
-        variant="body1"
-        style={{
-          cursor: clinic.onClick ? 'pointer' : 'default',
-        }}
-        onClick={() => {
-          if (clinic.onClick) {
-            clinic.onClickFunction()
-          }
-        }}
-      >
-        {clinic.content}
-      </Typography>
-    </div>
-  )
-
   const renderInfoNew = (clinic) => (
     <>
       <List>
@@ -73,7 +67,17 @@ const ClinicCard = ({ clinicInfo, setHighlightedMarker }) => {
           <ListItemIcon>
             <img src={clinic.src} alt="clinic-info" />
           </ListItemIcon>
-          <ListItemText primary={clinic.content} />
+          <ListItemText
+            primary={clinic.content}
+            style={{
+              cursor: clinic.onClick ? 'pointer' : 'default',
+            }}
+            onClick={() => {
+              if (clinic.onClick) {
+                clinic.onClickFunction(clinic?.params)
+              }
+            }}
+          />
         </ListItem>
       </List>
     </>
@@ -89,7 +93,11 @@ const ClinicCard = ({ clinicInfo, setHighlightedMarker }) => {
           setHighlightedMarker('')
         }}
       >
-        <CardActionArea>
+        <CardActionArea
+          onClick={() => {
+            history.push(`/clinics/${clinicInfo?._id ?? ''}`)
+          }}
+        >
           <CardMedia
             image={icons.clinic}
             style={{
@@ -131,6 +139,9 @@ const ClinicCard = ({ clinicInfo, setHighlightedMarker }) => {
                 borderRadius: 20,
                 marginBottom: 30,
               }}
+              onClick={() => {
+                history.push(`/clinics/${clinicInfo?._id ?? ''}`)
+              }}
             >
               View Details
             </Button>
@@ -149,62 +160,6 @@ const ClinicCard = ({ clinicInfo, setHighlightedMarker }) => {
         </CardContent>
       </Card>
     </>
-  )
-}
-
-function Clinic({ clinicInfo, setHighlightedMarker }) {
-  const clinicMock = [
-    {
-      src: icons.clinicName,
-      content: clinicInfo.name || 'Vet care',
-    },
-    {
-      src: icons.clinicPhone,
-      content: '(+64) 234-567-809',
-    },
-    {
-      src: icons.clinicHour,
-      content: '8:00am - 2:00pm',
-    },
-    {
-      src: icons.clinicStar,
-      content: '3.5',
-    },
-  ]
-
-  const renderInfo = (src, content) => (
-    <div className="clinic-box">
-      <img src={src} alt="clinic-info" />
-      <div>{content}</div>
-    </div>
-  )
-
-  return (
-    <div
-      className="clinic-card"
-      onMouseEnter={() => {
-        setHighlightedMarker(clinicInfo.name)
-      }}
-      onMouseLeave={() => {
-        setHighlightedMarker('')
-      }}
-    >
-      <a href="/find/service/vets">
-        <img className="clinic-img" src={icons.clinic} alt="clinic" />
-      </a>
-      <div>
-        {clinicMock.map((clinic) => renderInfo(clinic.src, clinic.content))}
-
-        <div className="clinic-box location-container">
-          <img src={icons.location} alt="location" />
-          <div className="location-info">181 Onewa Road, Birkenhead, Auckland 0626</div>
-        </div>
-      </div>
-
-      <button className="btn" type="button">
-        Book
-      </button>
-    </div>
   )
 }
 
