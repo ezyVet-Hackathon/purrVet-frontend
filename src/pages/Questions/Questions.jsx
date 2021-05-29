@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Redirect, useHistory } from 'react-router-dom'
 import uuid from 'react-uuid'
 import Carousel from 'react-elastic-carousel'
@@ -15,9 +15,17 @@ function Questions(props) {
   const [currentStep, setCurrentStep] = useState(0)
   const history = useHistory()
 
+  useEffect(() => {
+    if (localStorage.getItem(questionForm[0].step)) {
+      return <Redirect to="/map" />
+    }
+
+    return ''
+  }, [])
+
   const onNextPage = (nextStep) => {
     if (!nextStep) {
-      history.push('/find/clinics', answers)
+      history.push('/map', answers)
     } else {
       currentStep.slideNext()
     }
@@ -51,10 +59,6 @@ function Questions(props) {
         />
       </div>
     ))
-  }
-
-  if (localStorage.getItem(questionForm[0].step)) {
-    return <Redirect to="/find/services" />
   }
 
   return (
