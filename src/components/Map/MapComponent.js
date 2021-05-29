@@ -178,163 +178,144 @@ const AnotherMap = (props) => {
 
   return (
     <>
-      <h1>Test</h1>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <TextField
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            fullWidth
-            variant="outlined"
-            label="Search clinic here"
-          />
-        </Grid>
-        <Grid item xs={2}>
-          <Button
-            color="primary"
-            variant="contained"
-            onClick={() => {
-              setTransportMode('bus')
-            }}
-          >
-            Bus
-          </Button>
-        </Grid>
-        <Grid item xs={2}>
-          <Button color="primary" variant="contained">
-            Train
-          </Button>
-        </Grid>
-        <Grid item xs={2}>
-          <Button color="primary" variant="contained">
-            Walk
-          </Button>
-        </Grid>
-        <Grid item xs={12}>
-          <Button color="primary" variant="contained" onClick={() => handleSearch()}>
-            Search
-          </Button>
-        </Grid>
-      </Grid>
-      <Map
-        google={google}
-        zoom={16}
-        ref={mapRef}
-        containerStyle={{
-          width: '100%',
-          height: '600px',
-          position: 'relative',
-        }}
-        initialCenter={currentLocation}
-        center={currentLocation}
-        gestureHandling={'cooperative' || 'greedy' || 'cooperative'}
-        onDragend={(propsMap, map) => {
-          handleMapEvent(propsMap, map)
-        }}
-        onZoomChanged={(propsMap, map) => {
-          handleMapEvent(propsMap, map)
-        }}
-        onReady={(propsMap, map) => {
-          handleMapReady(propsMap, map)
-        }}
-      >
-        {filterVets.map((c) => {
-          const scaledSizeGoogle =
-            highlightedMarker === c.name ? new google.maps.Size(40, 50) : new google.maps.Size(20, 30)
-          return (
-            <Marker
-              name={c.name}
-              position={{
-                lat: c.location.lat,
-                lng: c.location.lng,
-              }}
-              onClick={(propsMap, marker) => handleOnClick(propsMap, marker)}
-              icon={{
-                url: locationMarkerIcon,
-                scaledSize: scaledSizeGoogle,
-              }}
-            />
-          )
-        })}
-        <Marker
-          name="Me"
-          position={{
-            lat: currentLocation.lat,
-            lng: currentLocation.lng,
-          }}
-          icon={{
-            url: icons.currentLocationMarker,
-            scaledSize: new google.maps.Size(15, 27),
-          }}
+      <div className="input-search-container">
+        <TextField
+          className="search-input"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          fullWidth
+          variant="outlined"
+          label="Search clinic here"
         />
-      </Map>
-      <Grid
-        container
-        spacing={3}
-        style={{
-          marginTop: 30,
-        }}
-      >
-        {filterVets.map((c) => {
-          return (
-            <Grid item xs={12} sm={4} md={3} lg={2}>
-              <Clinic
-                clinicInfo={c}
-                setHighlightedMarker={setHighlightedMarker}
-                setReviews={setReviews}
-                setShowReviewModal={setShowReviewModal}
+        <Button variant="contained" color="primary" onClick={() => handleSearch()}>
+          Search
+        </Button>
+      </div>
+
+      <div className="map">
+        <Map
+          google={google}
+          zoom={16}
+          ref={mapRef}
+          containerStyle={{
+            width: '100%',
+            height: '600px',
+            position: 'relative',
+          }}
+          initialCenter={currentLocation}
+          center={currentLocation}
+          gestureHandling={'cooperative' || 'greedy' || 'cooperative'}
+          onDragend={(propsMap, map) => {
+            handleMapEvent(propsMap, map)
+          }}
+          onZoomChanged={(propsMap, map) => {
+            handleMapEvent(propsMap, map)
+          }}
+          onReady={(propsMap, map) => {
+            handleMapReady(propsMap, map)
+          }}
+        >
+          {filterVets.map((c) => {
+            const scaledSizeGoogle =
+              highlightedMarker === c.name ? new google.maps.Size(40, 50) : new google.maps.Size(20, 30)
+            return (
+              <Marker
+                name={c.name}
+                position={{
+                  lat: c.location.lat,
+                  lng: c.location.lng,
+                }}
+                onClick={(propsMap, marker) => handleOnClick(propsMap, marker)}
+                icon={{
+                  url: locationMarkerIcon,
+                  scaledSize: scaledSizeGoogle,
+                }}
               />
-            </Grid>
-          )
-        })}
-      </Grid>
-      <Backdrop style={{ zIndex: 10000 }} open={loading}>
-        <CircularProgress />
-      </Backdrop>
-      <Dialog
-        open={showReviewModal}
-        onEscapeKeyDown={() => setShowReviewModal(false)}
-        onBackdropClick={() => setShowReviewModal(false)}
-      >
-        <DialogTitle onClose={() => setShowReviewModal(false)}>List of reviews</DialogTitle>
-        <DialogContent dividers>
-          <List>
-            {(reviews ?? []).length === 0 ? (
-              <Typography variant="body1">No data available for this clinic.</Typography>
-            ) : (
-              (reviews ?? []).map((c) => {
-                return (
-                  <>
-                    <ListItem alignItems="flex-start">
-                      <ListItemAvatar>
-                        <Avatar
-                          alt={c?.author_name ?? ''}
-                          src={c?.profile_photo_url ?? '/static/images/avatar/1.jpg'}
+            )
+          })}
+          <Marker
+            name="Me"
+            position={{
+              lat: currentLocation.lat,
+              lng: currentLocation.lng,
+            }}
+            icon={{
+              url: icons.currentLocationMarker,
+              scaledSize: new google.maps.Size(15, 27),
+            }}
+          />
+        </Map>
+      </div>
+
+      <div className="clinics-container">
+        <Grid
+          container
+          spacing={3}
+          style={{
+            marginTop: 30,
+          }}
+        >
+          {filterVets.map((c) => {
+            return (
+              <Grid item xs={12} sm={4} md={3} lg={2}>
+                <Clinic
+                  clinicInfo={c}
+                  setHighlightedMarker={setHighlightedMarker}
+                  setReviews={setReviews}
+                  setShowReviewModal={setShowReviewModal}
+                />
+              </Grid>
+            )
+          })}
+        </Grid>
+        <Backdrop style={{ zIndex: 10000 }} open={loading}>
+          <CircularProgress />
+        </Backdrop>
+        <Dialog
+          open={showReviewModal}
+          onEscapeKeyDown={() => setShowReviewModal(false)}
+          onBackdropClick={() => setShowReviewModal(false)}
+        >
+          <DialogTitle onClose={() => setShowReviewModal(false)}>List of reviews</DialogTitle>
+          <DialogContent dividers>
+            <List>
+              {(reviews ?? []).length === 0 ? (
+                <Typography variant="body1">No data available for this clinic.</Typography>
+              ) : (
+                (reviews ?? []).map((c) => {
+                  return (
+                    <>
+                      <ListItem alignItems="flex-start">
+                        <ListItemAvatar>
+                          <Avatar
+                            alt={c?.author_name ?? ''}
+                            src={c?.profile_photo_url ?? '/static/images/avatar/1.jpg'}
+                          />
+                        </ListItemAvatar>
+                        <ListItemText
+                          primary={c?.author_name ?? 'Name'}
+                          secondary={
+                            <>
+                              <Typography component="span" variant="body2" color="textPrimary">
+                                {`${c?.relative_time_description ?? ''} - `}
+                              </Typography>
+                              <Typography component="span" variant="body2" color="textPrimary">
+                                {`Rating: ${c?.rating ?? '4.7'} - `}
+                              </Typography>
+                              {c?.text ?? ''}
+                            </>
+                          }
                         />
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={c?.author_name ?? 'Name'}
-                        secondary={
-                          <>
-                            <Typography component="span" variant="body2" color="textPrimary">
-                              {`${c?.relative_time_description ?? ''} - `}
-                            </Typography>
-                            <Typography component="span" variant="body2" color="textPrimary">
-                              {`Rating: ${c?.rating ?? '4.7'} - `}
-                            </Typography>
-                            {c?.text ?? ''}
-                          </>
-                        }
-                      />
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                  </>
-                )
-              })
-            )}
-          </List>
-        </DialogContent>
-      </Dialog>
+                      </ListItem>
+                      <Divider variant="inset" component="li" />
+                    </>
+                  )
+                })
+              )}
+            </List>
+          </DialogContent>
+        </Dialog>
+      </div>
     </>
   )
 }
