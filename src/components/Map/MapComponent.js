@@ -246,73 +246,76 @@ const AnotherMap = (props) => {
           />
         </Map>
       </div>
-      <Grid
-        container
-        spacing={3}
-        style={{
-          marginTop: 30,
-        }}
-      >
-        {filterVets.map((c) => {
-          return (
-            <Grid item xs={12} sm={4} md={3} lg={2}>
-              <Clinic
-                clinicInfo={c}
-                setHighlightedMarker={setHighlightedMarker}
-                setReviews={setReviews}
-                setShowReviewModal={setShowReviewModal}
-              />
-            </Grid>
-          )
-        })}
-      </Grid>
-      <Backdrop style={{ zIndex: 10000 }} open={loading}>
-        <CircularProgress />
-      </Backdrop>
-      <Dialog
-        open={showReviewModal}
-        onEscapeKeyDown={() => setShowReviewModal(false)}
-        onBackdropClick={() => setShowReviewModal(false)}
-      >
-        <DialogTitle onClose={() => setShowReviewModal(false)}>List of reviews</DialogTitle>
-        <DialogContent dividers>
-          <List>
-            {(reviews ?? []).length === 0 ? (
-              <Typography variant="body1">No data available for this clinic.</Typography>
-            ) : (
-              (reviews ?? []).map((c) => {
-                return (
-                  <>
-                    <ListItem alignItems="flex-start">
-                      <ListItemAvatar>
-                        <Avatar
-                          alt={c?.author_name ?? ''}
-                          src={c?.profile_photo_url ?? '/static/images/avatar/1.jpg'}
+
+      <div className="clinics-container">
+        <Grid
+          container
+          spacing={3}
+          style={{
+            marginTop: 30,
+          }}
+        >
+          {filterVets.map((c) => {
+            return (
+              <Grid item xs={12} sm={4} md={3} lg={2}>
+                <Clinic
+                  clinicInfo={c}
+                  setHighlightedMarker={setHighlightedMarker}
+                  setReviews={setReviews}
+                  setShowReviewModal={setShowReviewModal}
+                />
+              </Grid>
+            )
+          })}
+        </Grid>
+        <Backdrop style={{ zIndex: 10000 }} open={loading}>
+          <CircularProgress />
+        </Backdrop>
+        <Dialog
+          open={showReviewModal}
+          onEscapeKeyDown={() => setShowReviewModal(false)}
+          onBackdropClick={() => setShowReviewModal(false)}
+        >
+          <DialogTitle onClose={() => setShowReviewModal(false)}>List of reviews</DialogTitle>
+          <DialogContent dividers>
+            <List>
+              {(reviews ?? []).length === 0 ? (
+                <Typography variant="body1">No data available for this clinic.</Typography>
+              ) : (
+                (reviews ?? []).map((c) => {
+                  return (
+                    <>
+                      <ListItem alignItems="flex-start">
+                        <ListItemAvatar>
+                          <Avatar
+                            alt={c?.author_name ?? ''}
+                            src={c?.profile_photo_url ?? '/static/images/avatar/1.jpg'}
+                          />
+                        </ListItemAvatar>
+                        <ListItemText
+                          primary={c?.author_name ?? 'Name'}
+                          secondary={
+                            <>
+                              <Typography component="span" variant="body2" color="textPrimary">
+                                {`${c?.relative_time_description ?? ''} - `}
+                              </Typography>
+                              <Typography component="span" variant="body2" color="textPrimary">
+                                {`Rating: ${c?.rating ?? '4.7'} - `}
+                              </Typography>
+                              {c?.text ?? ''}
+                            </>
+                          }
                         />
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={c?.author_name ?? 'Name'}
-                        secondary={
-                          <>
-                            <Typography component="span" variant="body2" color="textPrimary">
-                              {`${c?.relative_time_description ?? ''} - `}
-                            </Typography>
-                            <Typography component="span" variant="body2" color="textPrimary">
-                              {`Rating: ${c?.rating ?? '4.7'} - `}
-                            </Typography>
-                            {c?.text ?? ''}
-                          </>
-                        }
-                      />
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                  </>
-                )
-              })
-            )}
-          </List>
-        </DialogContent>
-      </Dialog>
+                      </ListItem>
+                      <Divider variant="inset" component="li" />
+                    </>
+                  )
+                })
+              )}
+            </List>
+          </DialogContent>
+        </Dialog>
+      </div>
     </>
   )
 }
