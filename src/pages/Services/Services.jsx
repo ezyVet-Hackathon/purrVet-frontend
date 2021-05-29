@@ -9,7 +9,7 @@ function Services(props) {
     <div className="box-container">
       <div>
         <div className="box">
-          <img src={icons.petshop} alt="petshop" />
+          <img src={icons.petShop} alt="petshop" />
         </div>
         <div className="box pet-train">
           <img src={icons.petTrain} alt="petTrain" />

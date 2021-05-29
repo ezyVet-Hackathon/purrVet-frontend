@@ -1,5 +1,8 @@
 import ezyvet from '../assets/icons/ezyVet.png'
-import petshop from '../assets/icons/petshop.png'
+import back from '../assets/icons/back.png'
+import notFound from '../assets/icons/notFound.png'
+
+import petShop from '../assets/icons/petshop.png'
 import petTrain from '../assets/icons/pet-train.png'
 import petCare from '../assets/icons/pet-care.png'
 import petClinic from '../assets/icons/pet-clinic.png'
@@ -31,7 +34,9 @@ import questionMark from '../assets/icons/question-mark.png'
 
 const icons = {
   ezyvet,
-  petShop: petshop,
+  back,
+  notFound,
+  petShop,
   petTrain,
   petCare,
   petClinic,

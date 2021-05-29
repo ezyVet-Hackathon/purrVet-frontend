@@ -1,0 +1,19 @@
+@import '../../assets/styles/Global.scss';
+
+.container {
+  background-color: white;
+  width: 100vw;
+  height: 80vh;
+}
+
+.messageContainer {
+  @include flexCenterColumn();
+
+  .notFoundText {
+    margin-bottom: 2rem;
+  }
+}
+
+.largeIcon {
+  max-width: 20vw;
+}

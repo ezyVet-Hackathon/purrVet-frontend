@@ -8,6 +8,8 @@ import locationMarkerIcon from './location.png'
 import Clinic from '../Clinic/Clinic'
 import { serverInstance } from '../../instances'
 
+import './Map.scss'
+
 const AnotherMap = (props) => {
   const { google } = props
   const mapRef = createRef()
@@ -199,47 +201,49 @@ const AnotherMap = (props) => {
           </Button>
         </Grid>
       </Grid>
-      <Map
-        google={google}
-        zoom={16}
-        ref={mapRef}
-        containerStyle={{
-          width: '100%',
-          height: '600px',
-          position: 'relative',
-        }}
-        initialCenter={currentLocation}
-        center={currentLocation}
-        gestureHandling={'cooperative' || 'greedy' || 'cooperative'}
-        onDragend={(propsMap, map) => {
-          handleMapEvent(propsMap, map)
-        }}
-        onZoomChanged={(propsMap, map) => {
-          handleMapEvent(propsMap, map)
-        }}
-        onReady={(propsMap, map) => {
-          handleMapReady(propsMap, map)
-        }}
-      >
-        {filterVets.map((c) => {
-          const scaledSizeGoogle =
-            highlightedMarker === c.name ? new google.maps.Size(40, 50) : new google.maps.Size(20, 30)
-          return (
-            <Marker
-              name={c.name}
-              position={{
-                lat: c.location.lat,
-                lng: c.location.lng,
-              }}
-              onClick={(propsMap, marker) => handleOnClick(propsMap, marker)}
-              icon={{
-                url: locationMarkerIcon,
-                scaledSize: scaledSizeGoogle,
-              }}
-            />
-          )
-        })}
-      </Map>
+      <div className="map">
+        <Map
+          google={google}
+          zoom={16}
+          ref={mapRef}
+          containerStyle={{
+            width: '100%',
+            height: '600px',
+            position: 'relative',
+          }}
+          initialCenter={currentLocation}
+          center={currentLocation}
+          gestureHandling={'cooperative' || 'greedy' || 'cooperative'}
+          onDragend={(propsMap, map) => {
+            handleMapEvent(propsMap, map)
+          }}
+          onZoomChanged={(propsMap, map) => {
+            handleMapEvent(propsMap, map)
+          }}
+          onReady={(propsMap, map) => {
+            handleMapReady(propsMap, map)
+          }}
+        >
+          {filterVets.map((c) => {
+            const scaledSizeGoogle =
+              highlightedMarker === c.name ? new google.maps.Size(40, 50) : new google.maps.Size(20, 30)
+            return (
+              <Marker
+                name={c.name}
+                position={{
+                  lat: c.location.lat,
+                  lng: c.location.lng,
+                }}
+                onClick={(propsMap, marker) => handleOnClick(propsMap, marker)}
+                icon={{
+                  url: locationMarkerIcon,
+                  scaledSize: scaledSizeGoogle,
+                }}
+              />
+            )
+          })}
+        </Map>
+      </div>
       <Grid
         container
         spacing={3}
