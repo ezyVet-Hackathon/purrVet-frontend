@@ -39,9 +39,8 @@ Now purrVet-o! :3
 
 ## Key Features
 * Display markers on the map for vets
-* Filter your search via rating, pet species etc
+* Filter your search from a questionaire
 * Display vet clinic information
-* Direct to book with a vet clinic
 * Display vet information
 
 ## Local Instance
