@@ -47,17 +47,7 @@ Now purrVet-o! :3
 ## Local Instance
 
 ```sh
-git clone https://github.com/ezyVet-Hackathon/purrVet-frontend/ ./frontend
-git clone https://github.com/ezyVet-Hackathon/purrVet-Backend ./backend
-```
-
-and then
-
-```
-For Frontend
-
-cd ./Ultimate-Frontend && npm i;
-Create .env file based on .env.template
+git clone https://github.com/ezyVet-Hackathon/purrVet-frontend/
 ```
 
 ```
@@ -84,8 +74,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 > LinkedIn [Taylor Tran](www.linkedin.com/in/taylor-tran-0024) &nbsp;&middot;&nbsp;
 > Github [@teinnt](https://github.com/teinnt)
 
+Contributions: Frontend Developer & UI/UX Designer - linked 
+
 > LinkedIn [Bob Liou](https://www.linkedin.com/in/bob-liou/) &nbsp;&middot;&nbsp;
 > Github [@BobTheSoftwareDeveloper](https://github.com/BobTheSoftwareDeveloper)
+> 
+Contributions: Full Stack Developer
 
 > LinkedIn [Kelly Luo](https://www.linkedin.com/in/kelly-luo-engineering/) &nbsp;&middot;&nbsp;
 > Github [@kelly-luo](https://github.com/kelly-luo)
+
+Contributions: SCRUM Master, Product Owner & Frontend Developer
