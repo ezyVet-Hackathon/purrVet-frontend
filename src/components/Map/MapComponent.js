@@ -163,44 +163,20 @@ const AnotherMap = (props) => {
 
   return (
     <div style={{ backgroundColor: 'white' }}>
-      <h1>Test</h1>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <TextField
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            fullWidth
-            variant="outlined"
-            label="Search clinic here"
-          />
-        </Grid>
-        <Grid item xs={2}>
-          <Button
-            color="primary"
-            variant="contained"
-            onClick={() => {
-              setTransportMode('bus')
-            }}
-          >
-            Bus
-          </Button>
-        </Grid>
-        <Grid item xs={2}>
-          <Button color="primary" variant="contained">
-            Train
-          </Button>
-        </Grid>
-        <Grid item xs={2}>
-          <Button color="primary" variant="contained">
-            Walk
-          </Button>
-        </Grid>
-        <Grid item xs={12}>
-          <Button color="primary" variant="contained" onClick={() => handleSearch()}>
-            Search
-          </Button>
-        </Grid>
-      </Grid>
+      <div className="input-search-container">
+        <TextField
+          className="search-input"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          fullWidth
+          variant="outlined"
+          label="Search clinic here"
+        />
+        <Button variant="contained" color="primary" onClick={() => handleSearch()}>
+          Search
+        </Button>
+      </div>
+
       <div className="map">
         <Map
           google={google}
