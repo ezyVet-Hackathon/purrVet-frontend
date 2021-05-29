@@ -43,7 +43,13 @@ function Questions(props) {
 
     localStorage.setItem(step, tempAnswer[`${step}`])
 
+    if (tempAnswer[`${step}`] === 'yes') {
+      history.push('/map')
+    }
+
     onNextPage(nextStep)
+
+    return null
   }
 
   const renderQuestionBoxes = () => {
